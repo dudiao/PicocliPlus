@@ -1,5 +1,6 @@
 package com.github.dudiao.picocli.plus;
 
+import cn.hutool.extra.spring.SpringUtil;
 import org.springframework.boot.SpringBootVersion;
 import picocli.CommandLine;
 
@@ -16,6 +17,8 @@ public class PicocliPlusVersionProvider implements CommandLine.IVersionProvider 
   public String[] getVersion() throws Exception {
     String springbootVersion = String.format(":: SpringBoot  :: v(%s)", SpringBootVersion.getVersion());
     String nbootCliVersion = String.format(":: PicocliPlus :: v(%s)", PicocliPlusVersion.getVersion());
-    return new String[]{springbootVersion, nbootCliVersion};
+    String appVersion = String.format(":: %s :: v(%s)", SpringUtil.getApplicationName(),
+        SpringUtil.getProperty("application.version"));
+    return new String[]{springbootVersion, nbootCliVersion, appVersion};
   }
 }
