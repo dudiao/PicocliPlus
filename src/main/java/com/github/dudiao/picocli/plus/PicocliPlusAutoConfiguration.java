@@ -4,16 +4,20 @@ import cn.hutool.extra.spring.EnableSpringUtil;
 import com.github.dudiao.picocli.plus.cli.AutoCompleteCliServiceImpl;
 import com.github.dudiao.picocli.plus.cli.PicocliPlusCli;
 import com.github.dudiao.picocli.plus.cli.PicocliPlusCliService;
+import com.github.dudiao.picocli.plus.nativex.HutoolRuntimeHints;
+import com.github.dudiao.picocli.plus.nativex.PicocliPlusRuntimeHits;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportRuntimeHints;
 import picocli.CommandLine;
 
 import java.util.List;
 
 @EnableSpringUtil
 @AutoConfiguration
+@ImportRuntimeHints(value = {HutoolRuntimeHints.class, PicocliPlusRuntimeHits.class})
 public class PicocliPlusAutoConfiguration implements CommandLineRunner, ExitCodeGenerator {
 
   private int exitCode;
